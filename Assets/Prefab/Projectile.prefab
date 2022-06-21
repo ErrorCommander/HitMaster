@@ -127,9 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b650b7032afd1034089836b8d191db4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 12.25
   _damage: 5
-  _lifeTime: 5
+  <Speed>k__BackingField: 20
+  _lifeTime: 3
 --- !u!136 &3898732748076790663
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [field: SerializeField] public float Speed { get; private set; }
     [SerializeField] [Range(0, 100)] private int _damage = 5;
+    [field: SerializeField] public float Speed { get; private set; }
     [SerializeField] [Range(0, 25)] private float _lifeTime = 10;
 
     private float _timer = 0;

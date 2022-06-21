@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    [SerializeField] protected int _damage;
+    [field: SerializeField] public int Damage { get; private set; }
 
     public abstract void Attack(Vector3 point);
 }
