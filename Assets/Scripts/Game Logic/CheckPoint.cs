@@ -10,7 +10,10 @@ public class CheckPoint : MonoBehaviour
     [SerializeField] private List<Creature> _frendly;
 
     public bool IsPassed => _enemiesCount <= 0;
-
+    public event Action CheckPointPassed;
+    public event Action EnemyKilled;
+    public event Action FrendlyKilled;
+    
     private int _enemiesCount = 0;
     private int _frendlyCount = 0;
 
@@ -21,38 +24,40 @@ public class CheckPoint : MonoBehaviour
 
     private void Start()
     {
-        RegisterCreatures();
-        DeactivateCreatures();
+        VerifyCreatures();
+        EnableCreatures(false);
         enabled = false;
     }
 
-    private void RegisterCreatures()
+    private void VerifyCreatures()
     {
-        RegisterEnemys();
-        RegisterFrendly();
+        VerifyEnemys();
+        VerifyFrendly();
     }
 
-    private void RegisterEnemys()
+    private void VerifyEnemys()
     {
-        _enemiesCount = Register(_enemies, DieEnemy);
+        _enemiesCount = VerifyList(_enemies, DieEnemy);
     }
 
-    private void RegisterFrendly()
+    private void VerifyFrendly()
     {
-        _frendlyCount = Register(_frendly, DieFrendly);
+        _frendlyCount = VerifyList(_frendly, DieFrendly);
     }
 
-    private int Register(List<Creature> creatures, Action listener)
+    private int VerifyList(List<Creature> creatures, Action listener)
     {
         int counter = 0;
 
         foreach (var creature in creatures)
+        {
+            creature.OnDie -= listener;
             if (creature.IsAlive)
             {
                 counter++;
-                creature.OnDie -= listener;
                 creature.OnDie += listener;
             }
+        }
 
         return counter;
     }
@@ -60,22 +65,27 @@ public class CheckPoint : MonoBehaviour
     private void DieEnemy()
     {
         _enemiesCount--;
+        EnemyKilled?.Invoke();
 
         if (_enemiesCount <= 0)
         {
-            RegisterEnemys();
+            VerifyEnemys();
             if (_enemiesCount <= 0)
+            {
+                CheckPointPassed?.Invoke();
                 GameplayEventSystem.SendPassedCheckPoint();
+            }
         }
     }
 
     private void DieFrendly()
     {
         _frendlyCount--;
+        FrendlyKilled?.Invoke();
 
         if (_frendlyCount <= 0)
         {
-            RegisterFrendly();
+            VerifyFrendly();
             if (_frendlyCount <= 0)
                 Debug.Log("so why did you kill everyone?");
         }
@@ -85,30 +95,21 @@ public class CheckPoint : MonoBehaviour
 
     private void OnEnable()
     {
-        ActivateCreatures();
+        EnableCreatures(true);
     }
 
     private void OnDisable()
     {
-        DeactivateCreatures();
+        EnableCreatures(false);
     }
 
-    private void ActivateCreatures()
+    private void EnableCreatures(bool state)
     {
         foreach (var creature in _enemies)
-            creature.enabled = true;
+            creature.enabled = state;
 
         foreach (var creature in _frendly)
-            creature.enabled = true;
-    }
-
-    private void DeactivateCreatures()
-    {
-        foreach (var creature in _enemies)
-            creature.enabled = false;
-
-        foreach (var creature in _frendly)
-            creature.enabled = false;
+            creature.enabled = state;
     }
 
     private void OnApplicationQuit()

@@ -111,11 +111,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3502518230ebff459baf24120cec6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 5
+  <Damage>k__BackingField: 20
   _pool:
     _prefab: {fileID: 5176033963331937650, guid: 475d0ed396db22747a28d051a465a288, type: 3}
     _initPoolSize: 10
-  _prefabProjectile: {fileID: 4408693478004545106, guid: 475d0ed396db22747a28d051a465a288, type: 3}
   _speedProjectile: 20.4
   _lifeTimeProjectile: 5.3
   _localPointTpawtProjectile: {fileID: 8036890437571171001}

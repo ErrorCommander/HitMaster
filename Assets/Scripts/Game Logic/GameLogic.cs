@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static GameplayEventSystem;
 
+//не знаю как лучше навать этот класс
 public class GameLogic : MonoBehaviour
 {
     [SerializeField] private Way _way;
