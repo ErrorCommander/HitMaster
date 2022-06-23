@@ -8407,6 +8407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _numberCheckPoint: {fileID: 295451423}
   _progressInCheckPoint: {fileID: 2012671466}
+  _animationSliderSpeed: 2
 --- !u!4 &1550665684 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4604077172822636, guid: e865a10713e46984aba70d89a679e42f, type: 3}
