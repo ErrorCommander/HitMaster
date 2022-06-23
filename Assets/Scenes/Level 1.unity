@@ -97,8 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 4e5d67b74395b6a4fa310d38dd1b9616, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: a4db34bc9c1b1e845a15782bb9bc74f2, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.5
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -282,6 +282,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -396,6 +400,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -2.57
       objectReference: {fileID: 0}
+    - target: {fileID: 23917696373483618, guid: e865a10713e46984aba70d89a679e42f, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e865a10713e46984aba70d89a679e42f, type: 3}
 --- !u!4 &66612223 stripped
@@ -580,6 +588,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -2.57
       objectReference: {fileID: 0}
+    - target: {fileID: 23917696373483618, guid: e865a10713e46984aba70d89a679e42f, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e865a10713e46984aba70d89a679e42f, type: 3}
 --- !u!4 &105204021 stripped
@@ -692,6 +704,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23635924190403392, guid: 5527826a6315a224d850675a730c4f62, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5527826a6315a224d850675a730c4f62, type: 3}
 --- !u!1001 &160437293
@@ -1016,6 +1032,10 @@ PrefabInstance:
       value: 179.35518
       objectReference: {fileID: 0}
     - target: {fileID: 23573775944458588, guid: 917b3e362cb87ec4c9f396c33a955af2, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 23573775944458588, guid: 917b3e362cb87ec4c9f396c33a955af2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c6a5181c39f2ce4408030b9c2d1b47e2, type: 2}
@@ -1085,6 +1105,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23635924190403392, guid: 5527826a6315a224d850675a730c4f62, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 23635924190403392, guid: 5527826a6315a224d850675a730c4f62, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1395,6 +1419,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562808980}
     m_Modifications:
+    - target: {fileID: 2127108257906619394, guid: 417b0dce6601fd44b927d2f85aec215b, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 2149108139985549512, guid: 417b0dce6601fd44b927d2f85aec215b, type: 3}
       propertyPath: m_Name
       value: SM_PolygonCity_Veh_Car_Small_Wheel_rr
@@ -1622,6 +1650,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2d9674097da42b2448220c5e2805bb27, type: 2}
@@ -1704,6 +1736,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dd41db2cdb4e66e4985303e1287ab101, type: 2}
@@ -1773,6 +1809,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2068,6 +2108,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2d9674097da42b2448220c5e2805bb27, type: 2}
@@ -2080,6 +2124,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562808980}
     m_Modifications:
+    - target: {fileID: 2127108257906619394, guid: 417b0dce6601fd44b927d2f85aec215b, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 2149108139985549512, guid: 417b0dce6601fd44b927d2f85aec215b, type: 3}
       propertyPath: m_Name
       value: SM_PolygonCity_Veh_Car_Small_Wheel_rr (1)
@@ -2218,6 +2266,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23931675992484930, guid: d3f65bf385a3c3847ab550b32f3e53e8, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 23931675992484930, guid: d3f65bf385a3c3847ab550b32f3e53e8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3247,6 +3299,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 23635924190403392, guid: 5527826a6315a224d850675a730c4f62, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 23635924190403392, guid: 5527826a6315a224d850675a730c4f62, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 382781f3eb846ba4992cfb4e635c76ed, type: 2}
@@ -3323,6 +3379,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4364,6 +4424,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: a34e2e9511ab63041850d60a4868cfcf, type: 2}
     - target: {fileID: 23868303300934196, guid: bbea6872df405a045862b0d1f277c5ac, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 23868303300934196, guid: bbea6872df405a045862b0d1f277c5ac, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a34e2e9511ab63041850d60a4868cfcf, type: 2}
@@ -4444,6 +4508,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 5.6
       objectReference: {fileID: 0}
+    - target: {fileID: 23721894001881414, guid: bbc12ae2f967ec04e8c3c39eeb92733b, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 23721894001881414, guid: bbc12ae2f967ec04e8c3c39eeb92733b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4881,6 +4949,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 23635924190403392, guid: 5527826a6315a224d850675a730c4f62, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 23635924190403392, guid: 5527826a6315a224d850675a730c4f62, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 382781f3eb846ba4992cfb4e635c76ed, type: 2}
@@ -5198,6 +5270,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -5990,6 +6066,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 23999643563462664, guid: 9672218ecb324c240ae58e7a390701f2, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 23999643563462664, guid: 9672218ecb324c240ae58e7a390701f2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2d9674097da42b2448220c5e2805bb27, type: 2}
@@ -6094,6 +6174,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23889050435259212, guid: d6e2601c4f144db459adb4f5e7affc65, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 23889050435259212, guid: d6e2601c4f144db459adb4f5e7affc65, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6261,6 +6345,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23426470496333232, guid: 56edbd376562e9544ab88753fd3c4682, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56edbd376562e9544ab88753fd3c4682, type: 3}
 --- !u!114 &1348890873 stripped
@@ -6393,6 +6481,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23999643563462664, guid: 9672218ecb324c240ae58e7a390701f2, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 23999643563462664, guid: 9672218ecb324c240ae58e7a390701f2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -7986,6 +8078,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 23115425920495306, guid: 4ec4cfadebd96154690192fbd49e28b8, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 23115425920495306, guid: 4ec4cfadebd96154690192fbd49e28b8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 382781f3eb846ba4992cfb4e635c76ed, type: 2}
@@ -8062,6 +8158,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23749083013370596, guid: e30b3aeaaf8ec804198090a10eca14d8, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e30b3aeaaf8ec804198090a10eca14d8, type: 3}
 --- !u!114 &1649510164 stripped
@@ -8176,6 +8276,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 23635924190403392, guid: 5527826a6315a224d850675a730c4f62, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 23635924190403392, guid: 5527826a6315a224d850675a730c4f62, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 382781f3eb846ba4992cfb4e635c76ed, type: 2}
@@ -8252,6 +8356,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23865713618028980, guid: 777f53d3993533d4184fa410d0cdfae7, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 777f53d3993533d4184fa410d0cdfae7, type: 3}
 --- !u!4 &1750668692 stripped
@@ -8330,6 +8438,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -2.57
       objectReference: {fileID: 0}
+    - target: {fileID: 23917696373483618, guid: e865a10713e46984aba70d89a679e42f, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e865a10713e46984aba70d89a679e42f, type: 3}
 --- !u!1001 &1757402351
@@ -8391,6 +8503,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23635924190403392, guid: 5527826a6315a224d850675a730c4f62, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 23635924190403392, guid: 5527826a6315a224d850675a730c4f62, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -8461,6 +8577,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -8543,6 +8663,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23749083013370596, guid: e30b3aeaaf8ec804198090a10eca14d8, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e30b3aeaaf8ec804198090a10eca14d8, type: 3}
 --- !u!1 &1852110708
@@ -8746,6 +8870,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2d9674097da42b2448220c5e2805bb27, type: 2}
@@ -8827,6 +8955,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23721894001881414, guid: bbc12ae2f967ec04e8c3c39eeb92733b, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 23721894001881414, guid: bbc12ae2f967ec04e8c3c39eeb92733b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -9328,6 +9460,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 23635924190403392, guid: 5527826a6315a224d850675a730c4f62, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 23635924190403392, guid: 5527826a6315a224d850675a730c4f62, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2d9674097da42b2448220c5e2805bb27, type: 2}
@@ -9392,6 +9528,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -9470,6 +9610,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 382781f3eb846ba4992cfb4e635c76ed, type: 2}
@@ -9534,6 +9678,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 23672589033054590, guid: 37e681eb08549004c9d9c2be529cbf54, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
