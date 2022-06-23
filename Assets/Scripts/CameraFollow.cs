@@ -15,13 +15,13 @@ public class CameraFollow : MonoBehaviour
         GameplayEventSystem.OnPlayerArrivedInPoint.AddListener(SetTargetViewPoint);
     }
 
-    private void SetTargetViewPoint(Transform viewPoint)
+    private void SetTargetViewPoint(CheckPoint viewPoint)
     {
-        StartCoroutine(SetTargetWait(viewPoint, _delayToViewPoint));
+        StartCoroutine(SetTargetWait(viewPoint.transform, _delayToViewPoint));
         //_virtualCamera.Follow = viewPoint;
     }
 
-    private void SetTargetPlayer(Transform viewPoint)
+    private void SetTargetPlayer(CheckPoint viewPoint)
     {
         StartCoroutine(SetTargetWait(_player, _delayToPlayer));
     }

@@ -30,12 +30,12 @@ public class PlayerAnimation : MonoBehaviour
         _animator.Play(_animFire, 0);
     }
 
-    private void NextPoint(Transform point)
+    private void NextPoint(CheckPoint point)
     {
         _animator.SetFloat(_animFloatSpeed, _player.Speed);
     }
 
-    private void ArrivedInPoint(Transform point)
+    private void ArrivedInPoint(CheckPoint point)
     {
         _animator.SetFloat(_animFloatSpeed, 0);
     }

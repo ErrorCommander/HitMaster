@@ -9,23 +9,25 @@ public class CheckPoint : MonoBehaviour
     [SerializeField] private List<Creature> _enemies;
     [SerializeField] private List<Creature> _frendly;
 
-    public Vector3 Position => _viewPoint.position;
-    public bool IsPassed => _enemiesCount <= 0;
+    public int EnemiesCount => _enemies.Count;
+    public int FrendlyCount => _frendly.Count;
+    public Vector3 position => _viewPoint.position;
+    public bool IsPassed => LivingEnemiesCount <= 0;
     public event Action CheckPointPassed;
     public event Action EnemyKilled;
     public event Action FrendlyKilled;
     
-    private int _enemiesCount = 0;
-    private int _frendlyCount = 0;
+    public int LivingEnemiesCount { get; private set; }
+    public int LivingFrendlyCount { get; private set; }
 
     private void Awake()
     {
         GameplayEventSystem.OnPlayerMoveNextPoint.AddListener(PlayerMoveNextPoint);
     }
 
-    private void PlayerMoveNextPoint(Transform point)
+    private void PlayerMoveNextPoint(CheckPoint point)
     {
-        if (point == this.transform)
+        if (point == this)
         {
             GameplayEventSystem.OnPlayerMoveNextPoint.RemoveListener(PlayerMoveNextPoint);
             enabled = true;
@@ -46,12 +48,12 @@ public class CheckPoint : MonoBehaviour
 
     private void VerifyEnemys()
     {
-        _enemiesCount = VerifyList(_enemies, DieEnemy);
+        LivingEnemiesCount = VerifyList(_enemies, DieEnemy);
     }
 
     private void VerifyFrendly()
     {
-        _frendlyCount = VerifyList(_frendly, DieFrendly);
+        LivingFrendlyCount = VerifyList(_frendly, DieFrendly);
     }
 
     private int VerifyList(List<Creature> creatures, Action listener)
@@ -73,16 +75,17 @@ public class CheckPoint : MonoBehaviour
 
     private void DieEnemy()
     {
-        _enemiesCount--;
+        LivingEnemiesCount--;
         EnemyKilled?.Invoke();
+        GameplayEventSystem.SendEnemyDie();
 
-        if (_enemiesCount <= 0)
+        if (LivingEnemiesCount <= 0)
         {
             VerifyEnemys();
-            if (_enemiesCount <= 0)
+            if (LivingEnemiesCount <= 0)
             {
                 CheckPointPassed?.Invoke();
-                GameplayEventSystem.SendPassedCheckPoint(transform);
+                GameplayEventSystem.SendPassedCheckPoint(this);
                 enabled = false;
             }
         }
@@ -90,13 +93,14 @@ public class CheckPoint : MonoBehaviour
 
     private void DieFrendly()
     {
-        _frendlyCount--;
+        LivingFrendlyCount--;
         FrendlyKilled?.Invoke();
+        GameplayEventSystem.SendFrendlyDie();
 
-        if (_frendlyCount <= 0)
+        if (LivingFrendlyCount <= 0)
         {
             VerifyFrendly();
-            if (_frendlyCount <= 0)
+            if (LivingFrendlyCount <= 0)
                 Debug.Log("so why did you kill everyone?");
         }
         else

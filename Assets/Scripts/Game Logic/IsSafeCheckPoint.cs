@@ -20,7 +20,7 @@ public class IsSafeCheckPoint : MonoBehaviour
         foreach (var amin in _animators)
         {
             amin.SetBool(_animVarIsSafe, true);
-            amin.transform.LookAt(_checkPoint.Position);
+            amin.transform.LookAt(_checkPoint.position);
         }
     }
 }

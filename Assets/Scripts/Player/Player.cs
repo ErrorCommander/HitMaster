@@ -39,7 +39,7 @@ public class Player : MonoBehaviour, IMovable
         _agent.destination = position;
     }
 
-    public void MoveToNextPoint(Transform point)
+    public void MoveToNextPoint(CheckPoint point)
     {
         MoveTo(point.position);
         StartCoroutine(CheckArrivedInPoint(point));
@@ -69,7 +69,7 @@ public class Player : MonoBehaviour, IMovable
         _weapon.Attack(point);
     }
 
-    private IEnumerator CheckArrivedInPoint(Transform target)
+    private IEnumerator CheckArrivedInPoint(CheckPoint target)
     {
         yield return new WaitWhile(() => (target.position - transform.position).magnitude > _marginError);
         SendPlayerArrivedInPoint(target);
