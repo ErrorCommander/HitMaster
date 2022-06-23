@@ -9,6 +9,7 @@ public class CheckPoint : MonoBehaviour
     [SerializeField] private List<Creature> _enemies;
     [SerializeField] private List<Creature> _frendly;
 
+    public Vector3 Position => _viewPoint.position;
     public bool IsPassed => _enemiesCount <= 0;
     public event Action CheckPointPassed;
     public event Action EnemyKilled;
@@ -17,15 +18,23 @@ public class CheckPoint : MonoBehaviour
     private int _enemiesCount = 0;
     private int _frendlyCount = 0;
 
-    public Vector3 GetPosition()
+    private void Awake()
     {
-        return _viewPoint.position;
+        GameplayEventSystem.OnPlayerMoveNextPoint.AddListener(PlayerMoveNextPoint);
+    }
+
+    private void PlayerMoveNextPoint(Transform point)
+    {
+        if (point == this.transform)
+        {
+            GameplayEventSystem.OnPlayerMoveNextPoint.RemoveListener(PlayerMoveNextPoint);
+            enabled = true;
+        }
     }
 
     private void Start()
     {
         VerifyCreatures();
-        EnableCreatures(false);
         enabled = false;
     }
 
@@ -73,7 +82,8 @@ public class CheckPoint : MonoBehaviour
             if (_enemiesCount <= 0)
             {
                 CheckPointPassed?.Invoke();
-                GameplayEventSystem.SendPassedCheckPoint();
+                GameplayEventSystem.SendPassedCheckPoint(transform);
+                enabled = false;
             }
         }
     }

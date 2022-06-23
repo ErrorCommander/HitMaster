@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LinearWay : Way
+public sealed class LinearWay : Way
 {
     private int _indexer = 0;
 
@@ -13,24 +13,12 @@ public class LinearWay : Way
             if (!_checkPoints[i].IsPassed)
             {
                 _indexer++;
-                return _checkPoints[i];
+                CurrentCheckPoint = _checkPoints[i];
+                return CurrentCheckPoint;
             }
         }
         
         return null;
-    }
-
-    private IEnumerable<CheckPoint> NextCheckPoint()
-    {
-        foreach (var checkPoint in _checkPoints)
-        {
-            if (!checkPoint.IsPassed)
-            {
-                yield return checkPoint;
-            }
-        }
-
-        yield return null;
     }
 
     protected override void DrawWayLine()

@@ -2823,7 +2823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _way: {fileID: 682877978}
   _player: {fileID: 1354562335}
-  _delayPassedCheckPoint: 0.5
+  _delayAfterPassedCheckPoint: 0.7
 --- !u!114 &682877978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6590,8 +6590,8 @@ Transform:
   - {fileID: 208890973}
   - {fileID: 281027994}
   - {fileID: 716324048}
-  - {fileID: 641715406}
   - {fileID: 66612223}
+  - {fileID: 641715406}
   m_Father: {fileID: 429399869}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

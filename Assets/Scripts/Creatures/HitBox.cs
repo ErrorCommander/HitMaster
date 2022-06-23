@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HitBox : MonoBehaviour, IDamageable, IHitBox
@@ -16,9 +14,12 @@ public class HitBox : MonoBehaviour, IDamageable, IHitBox
 
     public void TakeDamage(int damage)
     {
-        damage = System.Math.Abs(damage);
-        damage = (int)System.Math.Round(damage * MultiplierDamage);
+        damage = Math.Abs(damage);
+        damage = (int)Math.Round(damage * MultiplierDamage);
         //Debug.Log("Total damage: " + damage);
+        if (ParentDamageable == null)
+            throw new NullReferenceException(this + " -> dont appointed \"ParentDamageable\"");
+
         ParentDamageable.TakeDamage(damage);
     }
 }

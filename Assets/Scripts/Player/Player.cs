@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Events;
 using static GameplayEventSystem;
 
 [RequireComponent(typeof(NavMeshAgent))]
@@ -56,7 +55,7 @@ public class Player : MonoBehaviour, IMovable
 
         OnFire?.Invoke();
         TurnToPoint(point);
-        StartCoroutine(ShootWhithDelay(point));
+        StartCoroutine(ShootEndOfFrame(point));
     }
 
     private void TurnToPoint(Vector3 point)
@@ -64,7 +63,7 @@ public class Player : MonoBehaviour, IMovable
         transform.rotation = Quaternion.LookRotation(point - transform.position);
     }
 
-    private IEnumerator ShootWhithDelay(Vector3 point)
+    private IEnumerator ShootEndOfFrame(Vector3 point)
     {
         yield return new WaitForEndOfFrame();
         _weapon.Attack(point);
