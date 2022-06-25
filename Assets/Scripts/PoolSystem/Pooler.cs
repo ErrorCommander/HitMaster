@@ -36,7 +36,7 @@ public class Pooler : MonoBehaviour
 
     public GameObject[] GetTags()
     {
-        return _poolsDictionary.Keys.ToArray();
+        return _poolsDictionary != null ? _poolsDictionary.Keys.ToArray() : null;
     }
 
     public GameObject Spawn(GameObject tag, Vector3 position, Quaternion rotation)
@@ -65,11 +65,11 @@ public class Pooler : MonoBehaviour
     {
         if (!_poolsDictionary.ContainsKey(tag))
         {
-            Debug.Log("Tag not found");
+            Debug.LogWarning(tag.name + " Tag not found");
             return false;
         }
 
-        Debug.Log("Pooler -> clear pool " + tag.name);
+        //Debug.Log("Pooler -> clear pool " + tag.name);
         _poolsDictionary[tag].ClearPool();
         return true;
     }
@@ -80,23 +80,15 @@ public class Pooler : MonoBehaviour
             ClearPool(tag);
     }
 
-    private void ClearAllPools()
-    {
-        if (_pools == null || _pools.Count == 0)
-            return;
-
-        ClearPool(GetTags());
-    }
-
     public bool DestroyPool(GameObject tag)
     {
         if (!_poolsDictionary.ContainsKey(tag))
         {
-            Debug.Log("Tag not found");
+            Debug.LogWarning(tag.name + " Tag not found");
             return false;
         }
 
-        Debug.Log("Pooler -> Destroy pool " + tag.name);
+        //Debug.Log("Pooler -> Destroy pool " + tag.name);
         _poolsDictionary[tag].DestroyPool();
         _pools.Remove(_poolsDictionary[tag]);
         _poolsDictionary.Remove(tag);
@@ -105,24 +97,39 @@ public class Pooler : MonoBehaviour
 
     public void DestroyPool(params GameObject[] tags)
     {
+        if (tags == null)
+            return;
+
         foreach (var tag in tags)
             DestroyPool(tag);
     }
 
-    private void Awake()
+    private void ClearAllPools()
     {
-        Initialize();
+        if (_pools == null || _pools.Count == 0)
+            return;
+
+        ClearPool(GetTags());
     }
 
     private void Initialize()
     {
-        _instance ??= this;
-        _poolsDictionary = new Dictionary<GameObject, Pool>();
-        _pools ??= new List<Pool>();
-        foreach (var pool in _pools)
-            AddPool(pool);
+        if (_instance == null)
+        {
+            _instance = this;
+            _poolsDictionary = new Dictionary<GameObject, Pool>();
+            _pools ??= new List<Pool>();
+            SceneManager.sceneUnloaded += UnloadScene;
+            foreach (var pool in _pools)
+                AddPool(pool);
+        }
+        else if (_pools != null)
+        {
+            foreach (var pool in _pools)
+                _instance.AddPool(pool);
 
-        SceneManager.sceneUnloaded += UnloadScene;
+            Destroy(gameObject);
+        }
     }
 
     private void DestroyAllPools()
@@ -131,8 +138,14 @@ public class Pooler : MonoBehaviour
             return;
 
         DestroyPool(GetTags());
-        _poolsDictionary.Clear();
-        _pools.Clear();
+        _poolsDictionary = null;
+        _pools = null;
+    }
+
+    private void Awake()
+    {
+        Initialize();
+        Debug.Log(name + "  Created");
     }
 
     private void OnDestroy()
@@ -143,6 +156,7 @@ public class Pooler : MonoBehaviour
 
     private void UnloadScene(Scene arg0)
     {
+        Debug.Log("UnloadScene -> _instance clear");
         _instance = null;
         SceneManager.sceneUnloaded -= UnloadScene;
     }

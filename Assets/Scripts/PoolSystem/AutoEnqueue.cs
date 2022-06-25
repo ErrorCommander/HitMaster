@@ -15,6 +15,8 @@ public class AutoEnqueue : MonoBehaviour
     private void OnDisable()
     {
         if (_queue != null)
+        {
             _queue.Enqueue(this.gameObject);
+        }
     }
 }

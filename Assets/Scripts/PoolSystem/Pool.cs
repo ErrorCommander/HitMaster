@@ -42,12 +42,19 @@ public class Pool
 
     public GameObject TakeGameObject()
     {
-        GameObject result;
+        GameObject result = null;
+        //Debug.Log("TakeGameObject");
 
         if (_queueReadyGO.Count > 0)
+        {
             result = _queueReadyGO.Dequeue();
+            //Debug.Log(result.name + "  " + result.activeSelf);
+        }
         else
+        {
             result = AddGameObject();
+            //Debug.Log(result.name + " add in pool");
+        }
 
         result.SetActive(true);
         return result;
@@ -61,14 +68,12 @@ public class Pool
 
         _queueReadyGO.Clear();
         _listGO.Clear();
-        Debug.Log("Pool is Clean");
     }
 
     public void DestroyPool()
     {
         ClearPool();
         MonoBehaviour.Destroy(_parentPool.gameObject);
-        Debug.Log("Pool destroyed");
     }
 
     private void FillPool()
@@ -77,7 +82,7 @@ public class Pool
             return;
 
         for (int i = _listGO.Count; i < _initPoolSize; i++)
-            AddGameObject();
+            _queueReadyGO.Enqueue(AddGameObject());
     }
 
     private GameObject AddGameObject()
@@ -87,7 +92,6 @@ public class Pool
         newObj.name = string.Format("{0} {1:000}", _prefab.name, _objID++);
         newObj.AddComponent<AutoEnqueue>().Initialize(_queueReadyGO);
         _listGO.Add(newObj);
-        _queueReadyGO.Enqueue(newObj);
 
         return newObj;
     }

@@ -45,6 +45,7 @@ public class PlayerBehavior : MonoBehaviour
     private void TapToScreen(UnityEngine.InputSystem.InputAction.CallbackContext input)
     {
         Vector2 screenPosition = input.ReadValue<Vector2>();
+        //Debug.Log(screenPosition);
 
         if (_enableControl)
         {

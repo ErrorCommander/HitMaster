@@ -6,13 +6,27 @@ public class HealthbarHandler : MonoBehaviour
     [SerializeField] private HealthBar _healthBarPrefab;
     [SerializeField] private Vector3 _offseetHealthbar;
     [SerializeField] private Creature _target;
-    [SerializeField] private bool _isVisibleAfterFirstDamage;
+    [SerializeField] private bool _isVisibleIncompleteHealth;
 
     private HealthBar _healthBar;
+    private Pooler _pooler;
+    private delegate void EnableHealthBar();
+    EnableHealthBar _enableHealthBar;
+
+    private void Awake()
+    {
+        _pooler = Pooler.Instance;
+    }
+
+    private void Start()
+    {
+        Initialize();
+        _enableHealthBar += Initialize;
+    }
 
     private void Initialize()
     {
-        if (_isVisibleAfterFirstDamage)
+        if (_isVisibleIncompleteHealth && _target.PartHealth == 1)
             _target.OnTakeDamage += InitializeHB;
         else
             InitializeHB();
@@ -20,11 +34,12 @@ public class HealthbarHandler : MonoBehaviour
 
     private void InitializeHB()
     {
-        _target.OnTakeDamage += Refresh;
-        _target.OnDie += DestroyHealthBar;
+        _target.OnDie += DisableHealthBar;
         _target.OnTakeDamage -= InitializeHB;
+        _target.OnTakeDamage += Refresh;
 
-        _healthBar ??= Instantiate(_healthBarPrefab, _target.transform.position + _offseetHealthbar, Quaternion.identity, _target.transform);
+        if (_healthBar == null)
+            _healthBar = _pooler.Spawn(_healthBarPrefab.gameObject, transform.position + _offseetHealthbar).GetComponent<HealthBar>();
         _healthBar.Initialize();
         _healthBar.Activate();
         Refresh();
@@ -38,22 +53,15 @@ public class HealthbarHandler : MonoBehaviour
     private void DisableHealthBar()
     {
         _target.OnTakeDamage -= Refresh;
+        _target.OnDie -= DisableHealthBar;
 
         if (_healthBar != null)
-            _healthBar.Deactivate();
+        {
+            _healthBar.gameObject.SetActive(false);
+            _healthBar = null;
+        }
     }
 
-    private void DestroyHealthBar()
-    {
-        DisableHealthBar();
-        _target.OnDie -= DestroyHealthBar;  
-
-        if (_healthBar != null)
-            Destroy(_healthBar.gameObject);
-    }
-
-    private void OnDestroy() => DestroyHealthBar();
     private void OnDisable() => DisableHealthBar();
-    private void OnEnable() => Initialize();
-
+    private void OnEnable() => _enableHealthBar?.Invoke();
 }

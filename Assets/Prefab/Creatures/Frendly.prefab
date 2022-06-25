@@ -696,9 +696,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBarPrefab: {fileID: 1535952012191333100, guid: be3b05c5a29621e4693b9d4d5417a69b, type: 3}
-  _offseetHealthbar: {x: 0, y: 2.2, z: 0}
+  _offseetHealthbar: {x: 0, y: 2.5, z: 0}
   _target: {fileID: 2180388823761717569}
-  _isVisibleAfterFirstDamage: 1
+  _isVisibleIncompleteHealth: 1
 --- !u!114 &480350396643253322
 MonoBehaviour:
   m_ObjectHideFlags: 0
