@@ -3,28 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class ComponentPool<TValue>  where TValue : Component
+public class UIPool<TValue>  where TValue : Component
 {
     [SerializeField] private TValue _prefab;
     [SerializeField] private int _initPoolSize;
+    [SerializeField] private RectTransform _parent;
 
     public TValue Tag => _prefab;
     public int PoolSize => _queueComponents == null ? _initPoolSize : _queueComponents.Count;
 
     private Queue<TValue> _queueComponents;
-    private Transform _parentPool;
     private ushort _componentID = 0;
 
-    public ComponentPool(TValue prefab, int poolSize)
+    public UIPool(TValue prefab, RectTransform parent, int poolSize)
     {
         _prefab = prefab;
         _initPoolSize = poolSize;
+        _parent = parent;
     }
 
     public void Initialize()
     {
         _queueComponents = new Queue<TValue>();
-        _parentPool = new GameObject("Pool: " + _prefab.gameObject.name).transform;
         FillPool();
     }
 
@@ -63,7 +63,6 @@ public class ComponentPool<TValue>  where TValue : Component
     public void DestroyPool()
     {
         ClearPool();
-        MonoBehaviour.Destroy(_parentPool.gameObject);
     }
 
     private void FillPool()
@@ -77,7 +76,8 @@ public class ComponentPool<TValue>  where TValue : Component
 
     private TValue AddGameObject()
     {
-        TValue component = MonoBehaviour.Instantiate<TValue>(_prefab);
+        TValue component = MonoBehaviour.Instantiate(_prefab);
+        component.transform.SetParent(_parent, false);
         component.gameObject.SetActive(false);
         component.gameObject.name = string.Format("{0} {1:000}", _prefab.name, _componentID++);
 

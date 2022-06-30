@@ -18,9 +18,12 @@ public class HitBox : MonoBehaviour, IDamageable, IHitBox
         damage = (int)Math.Round(damage * MultiplierDamage);
         //Debug.Log("Total damage: " + damage);
         if (ParentDamageable == null)
-            throw new NullReferenceException(this + " -> dont appointed \"ParentDamageable\"");
-
-        ParentDamageable.TakeDamage(damage);
+        {
+            Debug.LogWarning(this + " -> dont appointed \"ParentDamageable\"");
+            //throw new NullReferenceException(this + " -> dont appointed \"ParentDamageable\"");
+        }
+        else
+            ParentDamageable.TakeDamage(damage);
     }
 }
 
