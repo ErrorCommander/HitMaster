@@ -1,7 +1,7 @@
 using UnityEngine.Events;
 using UnityEngine;
 
-public static class GameplayEventSystem
+public static class GlobalEventSystem
 {
     public static UnityEvent OnStartGame = new UnityEvent();
     public static UnityEvent OnGameOver = new UnityEvent();

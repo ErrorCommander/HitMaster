@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static GameplayEventSystem;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -32,7 +31,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         _input.Player.Tap.performed -= FirstTap;
         _input.Player.Tap.performed += TapToScreen;
-        SendStartGame();
+        GlobalEventSystem.SendStartGame();
         MoveNextPoint();
     }
 
@@ -59,7 +58,7 @@ public class PlayerBehavior : MonoBehaviour
             _checkPoint.CheckPointPassed += CheckPointPassed;
         }
         else
-            SendGameOver();
+            GlobalEventSystem.SendGameOver();
 
         _enableControl = false;
     }

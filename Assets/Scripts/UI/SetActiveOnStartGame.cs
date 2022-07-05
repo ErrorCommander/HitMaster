@@ -7,12 +7,12 @@ public class SetActiveOnStartGame : MonoBehaviour
     private void Awake()
     {
         gameObject.SetActive(!_setActive);
-        GameplayEventSystem.OnStartGame.AddListener(ChangeActive);
+        GlobalEventSystem.OnStartGame.AddListener(ChangeActive);
     }
 
     private void ChangeActive()
     {
         gameObject.SetActive(_setActive);
-        GameplayEventSystem.OnStartGame.RemoveListener(ChangeActive);
+        GlobalEventSystem.OnStartGame.RemoveListener(ChangeActive);
     }
 }

@@ -9,7 +9,7 @@ public class CheckPoint : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera _camera;
     [SerializeField] private Transform _viewPoint;
     [SerializeField] private List<Creature> _enemies;
-    [SerializeField] private List<Creature> _frendly;
+    [SerializeField] private List<Frendly> _frendly;
 
     public int EnemiesCount => _enemies.Count;
     public int FrendlyCount => _frendly.Count;
@@ -50,7 +50,7 @@ public class CheckPoint : MonoBehaviour
         LivingFrendlyCount = VerifyList(_frendly, DieFrendly);
     }
 
-    private int VerifyList(List<Creature> creatures, Action listener)
+    private int VerifyList<TValue>(List<TValue> creatures, Action listener) where TValue : Creature
     {
         int counter = 0;
 
@@ -79,6 +79,14 @@ public class CheckPoint : MonoBehaviour
             {
                 CheckPointPassed?.Invoke();
                 enabled = false;
+
+                foreach (var unit in _frendly)
+                {
+                    if (unit.IsAlive)
+                    {
+                        unit.YouSafe(_viewPoint);
+                    }
+                }
             }
         }
     }

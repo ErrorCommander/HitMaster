@@ -15,7 +15,7 @@ public class PlayerAnimation : MonoBehaviour
         _animator = gameObject.GetComponent<Animator>();
         _player = gameObject.GetComponent<Player>();
         _player.OnFire += Fire;
-        GameplayEventSystem.OnGameOver.AddListener(Victory);
+        GlobalEventSystem.OnGameOver.AddListener(Victory);
     }
 
     public void Fire()

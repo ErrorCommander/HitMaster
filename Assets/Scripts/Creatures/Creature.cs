@@ -12,7 +12,7 @@ public abstract class Creature : MonoBehaviour, IDamageable, IHealthy
     public int CurentHealth { get; private set; }
     public float PartHealth => (float)CurentHealth / _maxHealth;
 
-    private void Awake()
+    private void OnEnable()
     {
         CurentHealth = _maxHealth;
     }
