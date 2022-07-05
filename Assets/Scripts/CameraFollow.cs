@@ -1,34 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] private Transform _player;
+    [SerializeField] private Player _player;
     [SerializeField] private Cinemachine.CinemachineVirtualCamera _virtualCamera;
-    [SerializeField] float _delayToViewPoint;
-    [SerializeField] float _delayToPlayer;
+
+    private CheckPoint _checkPoint;
 
     private void Start()
     {
-        GameplayEventSystem.OnPlayerMoveNextPoint.AddListener(SetTargetPlayer);
-        GameplayEventSystem.OnPlayerArrivedInPoint.AddListener(SetTargetViewPoint);
+        _virtualCamera.enabled = true;
+        _player.OnArrivedInPoint += SetTargetViewPoint;
+        _player.OnMoveToCheckPoint += SetTargetPlayer;
     }
 
-    private void SetTargetViewPoint(CheckPoint viewPoint)
+    private void SetTargetViewPoint()
     {
-        StartCoroutine(SetTargetWait(viewPoint.transform, _delayToViewPoint));
-        //_virtualCamera.Follow = viewPoint;
+        _virtualCamera.enabled = false;
     }
 
-    private void SetTargetPlayer(CheckPoint viewPoint)
+    private void SetTargetPlayer(CheckPoint point)
     {
-        StartCoroutine(SetTargetWait(_player, _delayToPlayer));
-    }
+        if(_checkPoint != null)
+            _checkPoint.EnableCamera(false);
 
-    private IEnumerator SetTargetWait(Transform viewPoint, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        _virtualCamera.Follow = viewPoint;
+        _checkPoint = point;
+        point.EnableCamera(true);
+        _virtualCamera.enabled = true;
     }
 }

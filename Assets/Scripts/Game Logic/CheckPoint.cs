@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,33 +6,26 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
+    [SerializeField] private CinemachineVirtualCamera _camera;
     [SerializeField] private Transform _viewPoint;
     [SerializeField] private List<Creature> _enemies;
-    [SerializeField] private List<Creature> _frendly;
+    [SerializeField] private List<Frendly> _frendly;
 
     public int EnemiesCount => _enemies.Count;
     public int FrendlyCount => _frendly.Count;
-    public Vector3 position => _viewPoint.position;
-    public bool IsPassed => LivingEnemiesCount <= 0;
-    public event Action CheckPointPassed;
-    public event Action EnemyKilled;
-    public event Action FrendlyKilled;
-    
     public int LivingEnemiesCount { get; private set; }
     public int LivingFrendlyCount { get; private set; }
+    public Vector3 position => _viewPoint.position;
+    public bool IsPassed => LivingEnemiesCount <= 0;
 
-    private void Awake()
-    {
-        GameplayEventSystem.OnPlayerMoveNextPoint.AddListener(PlayerMoveNextPoint);
-    }
+    public event Action CheckPointPassed;
+    public event Action EnemyDie;
+    public event Action FrendlyDie;
 
-    private void PlayerMoveNextPoint(CheckPoint point)
+    public void EnableCamera(bool enable)
     {
-        if (point == this)
-        {
-            GameplayEventSystem.OnPlayerMoveNextPoint.RemoveListener(PlayerMoveNextPoint);
-            enabled = true;
-        }
+        if (_camera != null)
+            _camera.enabled = enable;
     }
 
     private void Start()
@@ -56,7 +50,7 @@ public class CheckPoint : MonoBehaviour
         LivingFrendlyCount = VerifyList(_frendly, DieFrendly);
     }
 
-    private int VerifyList(List<Creature> creatures, Action listener)
+    private int VerifyList<TValue>(List<TValue> creatures, Action listener) where TValue : Creature
     {
         int counter = 0;
 
@@ -76,8 +70,7 @@ public class CheckPoint : MonoBehaviour
     private void DieEnemy()
     {
         LivingEnemiesCount--;
-        EnemyKilled?.Invoke();
-        GameplayEventSystem.SendEnemyDie();
+        EnemyDie?.Invoke();
 
         if (LivingEnemiesCount <= 0)
         {
@@ -85,8 +78,19 @@ public class CheckPoint : MonoBehaviour
             if (LivingEnemiesCount <= 0)
             {
                 CheckPointPassed?.Invoke();
-                GameplayEventSystem.SendPassedCheckPoint(this);
                 enabled = false;
+                FrendlyInSaferty();
+            }
+        }
+    }
+
+    private void FrendlyInSaferty()
+    {
+        foreach (var unit in _frendly)
+        {
+            if (unit.IsAlive)
+            {
+                unit.InSafety(_viewPoint);
             }
         }
     }
@@ -94,8 +98,7 @@ public class CheckPoint : MonoBehaviour
     private void DieFrendly()
     {
         LivingFrendlyCount--;
-        FrendlyKilled?.Invoke();
-        GameplayEventSystem.SendFrendlyDie();
+        FrendlyDie?.Invoke();
 
         if (LivingFrendlyCount <= 0)
         {
@@ -115,6 +118,8 @@ public class CheckPoint : MonoBehaviour
     private void OnDisable()
     {
         EnableCreatures(false);
+        if(_camera!=null)
+            _camera.enabled = false;
     }
 
     private void EnableCreatures(bool state)

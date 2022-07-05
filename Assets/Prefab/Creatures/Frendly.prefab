@@ -590,9 +590,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5838161899303625992}
   - component: {fileID: 5838161899310582520}
-  - component: {fileID: 2180388823761717569}
   - component: {fileID: 9062267237986554164}
   - component: {fileID: 480350396643253322}
+  - component: {fileID: 1167558048730414215}
   m_Layer: 0
   m_Name: Frendly
   m_TagString: Frendly
@@ -636,7 +636,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2180388823761717569
+--- !u!114 &9062267237986554164
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -645,7 +645,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 5838161899303336232}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b6be23a3e76f624bbb39c832565d983, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b614ce88f7fdd04ab949c2736e745ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthBarPrefab: {fileID: 1535952012191333100, guid: be3b05c5a29621e4693b9d4d5417a69b, type: 3}
+  _offseetHealthbar: {x: 0, y: 2.5, z: 0}
+  _target: {fileID: 1167558048730414215}
+  _isVisibleIncompleteHealth: 1
+--- !u!114 &480350396643253322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5838161899303336232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 696568fce1d076748bc0962674bdf760, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 5838161899310582520}
+--- !u!114 &1167558048730414215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5838161899303336232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7439780bdb85c5a488b57db5d0ca2ab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 50
@@ -683,35 +712,6 @@ MonoBehaviour:
   - _name: Leg
     _hitBox: {fileID: 768149149052787702}
     _multiplierDamage: 1
---- !u!114 &9062267237986554164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5838161899303336232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b614ce88f7fdd04ab949c2736e745ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _healthBarPrefab: {fileID: 1535952012191333100, guid: be3b05c5a29621e4693b9d4d5417a69b, type: 3}
-  _offseetHealthbar: {x: 0, y: 2.5, z: 0}
-  _target: {fileID: 2180388823761717569}
-  _isVisibleIncompleteHealth: 1
---- !u!114 &480350396643253322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5838161899303336232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 696568fce1d076748bc0962674bdf760, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 5838161899310582520}
 --- !u!1 &5838161899303336234
 GameObject:
   m_ObjectHideFlags: 0
