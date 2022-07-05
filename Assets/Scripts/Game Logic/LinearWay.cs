@@ -14,6 +14,7 @@ public sealed class LinearWay : Way
             {
                 _indexer++;
                 CurrentCheckPoint = _checkPoints[i];
+                CurrentCheckPoint.enabled = true;
                 return CurrentCheckPoint;
             }
         }

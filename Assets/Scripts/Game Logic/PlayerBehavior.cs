@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using static GameplayEventSystem;
 
-
 public class PlayerBehavior : MonoBehaviour
 {
     [SerializeField] private Way _way;
@@ -20,9 +19,7 @@ public class PlayerBehavior : MonoBehaviour
         _input = new PlayerInput();
         _input.Player.Tap.performed += FirstTap;
 
-        OnPlayerArrivedInPoint.AddListener((point) => _readyToAttack = _enableControl = true);
-        OnGameOver.AddListener(() => _enableControl = false);
-        OnPassedCheckPoint.AddListener(CheckPointPassed);
+        _player.OnArrivedInPoint += () => _readyToAttack = _enableControl = true;
     }
 
     private void Start()
@@ -36,10 +33,8 @@ public class PlayerBehavior : MonoBehaviour
     {
         _input.Player.Tap.performed -= FirstTap;
         _input.Player.Tap.performed += TapToScreen;
-        _enableControl = true;
         SendStartGame();
-        GetCheckPoint();
-        PlayerMoveToPoint(_checkPoint);
+        MoveNextPoint();
     }
 
     private void TapToScreen(UnityEngine.InputSystem.InputAction.CallbackContext input)
@@ -52,30 +47,29 @@ public class PlayerBehavior : MonoBehaviour
             if (_readyToAttack)
                 PlayerAttack(screenPosition);
             else
-                PlayerMoveToPoint(_checkPoint);
+                MoveNextPoint();
         }
     }
 
-    private void CheckPointPassed(CheckPoint point)
-    {
-        _readyToAttack = false;
-        StartCoroutine(TimedDisableControl(_delayAfterPassedCheckPoint));
-        GetCheckPoint();
-    }
-
-    private void GetCheckPoint()
+    private void MoveNextPoint()
     {
         _checkPoint = _way.GetNextCheckPoint();
-        if (_checkPoint == null)
-            SendGameOver();
-    }
-
-    private void PlayerMoveToPoint(CheckPoint point)
-    {
-        if (point != null)
-            SendPlayerMoveNextPoint(point);
+        if (_checkPoint != null)
+        {
+            _player.MoveToCheckPoint(_checkPoint);
+            _checkPoint.CheckPointPassed += CheckPointPassed;
+        }
+        else { }
+            //GameOver();
 
         _enableControl = false;
+    }
+
+    private void CheckPointPassed()
+    {
+        _checkPoint.CheckPointPassed -= CheckPointPassed;
+        _readyToAttack = false;
+        StartCoroutine(TimedDisableControl(_delayAfterPassedCheckPoint));
     }
 
     private void PlayerAttack(Vector2 screenPosition)

@@ -3,10 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using static GameplayEventSystem;
 
 [RequireComponent(typeof(NavMeshAgent))]
-
 public class Player : MonoBehaviour, IMovable
 {
     [SerializeField] private Weapon _weapon;
@@ -14,24 +12,33 @@ public class Player : MonoBehaviour, IMovable
     [SerializeField] private Vector3 _offsetPosition;
     [SerializeField] private Vector3 _offsetRotation;
 
-    public float Speed => _agent == null ? 0 : _agent.speed;
+    public float Speed => _agent == null ? 0 : _agent.velocity.magnitude;
     public event Action OnFire;
+    public event Action OnArrivedInPoint;
 
     private NavMeshAgent _agent;
-    private const float _marginError = 0.3f;
 
     private void Start()
     {
         _agent = gameObject.GetComponent<NavMeshAgent>();
-        if (_weapon != null)
+        SetWeapon(_weapon);
+    }
+
+    public void SetWeapon(Weapon weapon)
+    {
+        if (_weapon.gameObject.scene.isLoaded)
+            Destroy(_weapon.gameObject);
+
+        if (weapon == null)
         {
-            _weapon = Instantiate(_weapon);
-            _weapon.transform.parent = _fixedPointWeapon;
-            _weapon.transform.localPosition = _offsetPosition;
-            _weapon.transform.localRotation = Quaternion.Euler(_offsetRotation);
+            _weapon = null;
+            return;
         }
 
-        OnPlayerMoveNextPoint.AddListener(MoveToNextPoint);
+        _weapon = Instantiate(weapon);
+        _weapon.transform.parent = _fixedPointWeapon;
+        _weapon.transform.localPosition = _offsetPosition;
+        _weapon.transform.localRotation = Quaternion.Euler(_offsetRotation);
     }
 
     public void MoveTo(Vector3 position)
@@ -39,7 +46,7 @@ public class Player : MonoBehaviour, IMovable
         _agent.destination = position;
     }
 
-    public void MoveToNextPoint(CheckPoint point)
+    public void MoveToCheckPoint(CheckPoint point)
     {
         MoveTo(point.position);
         StartCoroutine(CheckArrivedInPoint(point));
@@ -71,7 +78,8 @@ public class Player : MonoBehaviour, IMovable
 
     private IEnumerator CheckArrivedInPoint(CheckPoint target)
     {
-        yield return new WaitWhile(() => (target.position - transform.position).magnitude > _marginError);
-        SendPlayerArrivedInPoint(target);
+        yield return null;
+        yield return new WaitWhile(() => _agent.hasPath);
+        OnArrivedInPoint?.Invoke();
     }
 }

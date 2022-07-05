@@ -3254,7 +3254,6 @@ GameObject:
   m_Component:
   - component: {fileID: 682877976}
   - component: {fileID: 682877978}
-  - component: {fileID: 682877977}
   m_Layer: 0
   m_Name: Way ViewPoints
   m_TagString: Untagged
@@ -3280,21 +3279,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &682877977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 682877975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c8882b72ac3f7a4e99827a0379bf4af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _way: {fileID: 682877978}
-  _player: {fileID: 1354562335}
-  _delayAfterPassedCheckPoint: 0.7
 --- !u!114 &682877978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7269,6 +7253,21 @@ MonoBehaviour:
   _fixedPointWeapon: {fileID: 2054633233}
   _offsetPosition: {x: -0.07, y: 0.2, z: 0.08}
   _offsetRotation: {x: -90, y: 90, z: 0}
+--- !u!114 &1354562336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354562330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c8882b72ac3f7a4e99827a0379bf4af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _way: {fileID: 682877978}
+  _player: {fileID: 1354562335}
+  _delayAfterPassedCheckPoint: 0.7
 --- !u!1001 &1359318083
 PrefabInstance:
   m_ObjectHideFlags: 0

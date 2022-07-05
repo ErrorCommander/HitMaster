@@ -17,9 +17,6 @@ public class ProgressBar : MonoBehaviour
     {
         _progressInCheckPoint.normalizedValue = 0;
         _numberCheckPoint.text = "0";
-        GameplayEventSystem.OnPlayerMoveNextPoint.AddListener(PlayerMoveNextPoint);
-        GameplayEventSystem.OnPlayerMoveNextPoint.AddListener(ResetProgressSlider);
-        GameplayEventSystem.OnEnemyDie.AddListener(EnemyDie);
     }
 
     private void EnemyDie()

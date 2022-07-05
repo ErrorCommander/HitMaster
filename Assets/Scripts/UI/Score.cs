@@ -12,11 +12,14 @@ public class Score : MonoBehaviour
 
     private void OnEnable()
     {
-        GameplayEventSystem.OnEnemyDie.RemoveListener(DieEnemy);
-        GameplayEventSystem.OnFrendlyDie.RemoveListener(DieFrendly);
+        //    GameplayEventSystem.OnEnemyDie.AddListener(DieEnemy);
+        //    GameplayEventSystem.OnFrendlyDie.AddListener(DieFrendly);
+    }
 
-        GameplayEventSystem.OnEnemyDie.AddListener(DieEnemy);
-        GameplayEventSystem.OnFrendlyDie.AddListener(DieFrendly);
+    private void OnDisable()
+    {
+        //    GameplayEventSystem.OnEnemyDie.RemoveListener(DieEnemy);
+        //    GameplayEventSystem.OnFrendlyDie.RemoveListener(DieFrendly);
     }
 
     private void DieEnemy()

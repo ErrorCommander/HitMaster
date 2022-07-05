@@ -11,28 +11,14 @@ public class CheckPoint : MonoBehaviour
 
     public int EnemiesCount => _enemies.Count;
     public int FrendlyCount => _frendly.Count;
+    public int LivingEnemiesCount { get; private set; }
+    public int LivingFrendlyCount { get; private set; }
     public Vector3 position => _viewPoint.position;
     public bool IsPassed => LivingEnemiesCount <= 0;
+
     public event Action CheckPointPassed;
     public event Action EnemyKilled;
     public event Action FrendlyKilled;
-    
-    public int LivingEnemiesCount { get; private set; }
-    public int LivingFrendlyCount { get; private set; }
-
-    private void Awake()
-    {
-        GameplayEventSystem.OnPlayerMoveNextPoint.AddListener(PlayerMoveNextPoint);
-    }
-
-    private void PlayerMoveNextPoint(CheckPoint point)
-    {
-        if (point == this)
-        {
-            GameplayEventSystem.OnPlayerMoveNextPoint.RemoveListener(PlayerMoveNextPoint);
-            enabled = true;
-        }
-    }
 
     private void Start()
     {
@@ -77,7 +63,6 @@ public class CheckPoint : MonoBehaviour
     {
         LivingEnemiesCount--;
         EnemyKilled?.Invoke();
-        GameplayEventSystem.SendEnemyDie();
 
         if (LivingEnemiesCount <= 0)
         {
@@ -85,7 +70,6 @@ public class CheckPoint : MonoBehaviour
             if (LivingEnemiesCount <= 0)
             {
                 CheckPointPassed?.Invoke();
-                GameplayEventSystem.SendPassedCheckPoint(this);
                 enabled = false;
             }
         }
@@ -95,7 +79,6 @@ public class CheckPoint : MonoBehaviour
     {
         LivingFrendlyCount--;
         FrendlyKilled?.Invoke();
-        GameplayEventSystem.SendFrendlyDie();
 
         if (LivingFrendlyCount <= 0)
         {
