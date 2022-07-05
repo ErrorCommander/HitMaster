@@ -4,9 +4,9 @@ using UnityEngine;
 public class Frendly : CreatureFromHitBoxes
 {
     private Animator _animator;
-    private string _animVarIsSafe = "IsSafe";
+    private int _animVarIsSafe = Animator.StringToHash("IsSafe");
 
-    public void YouSafe(Transform lookPoint)
+    public void InSafety(Transform lookPoint)
     {
         _animator.SetBool(_animVarIsSafe, true);
         _animator.transform.LookAt(lookPoint);

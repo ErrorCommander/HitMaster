@@ -84,7 +84,7 @@ public class CheckPoint : MonoBehaviour
                 {
                     if (unit.IsAlive)
                     {
-                        unit.YouSafe(_viewPoint);
+                        unit.InSafety(_viewPoint);
                     }
                 }
             }

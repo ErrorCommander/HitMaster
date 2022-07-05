@@ -6,9 +6,9 @@ public class PlayerAnimation : MonoBehaviour
 {
     private Animator _animator;
     private Player _player;
-    private string _animFire = "Fire";
-    private string _animFloatSpeed = "Speed";
-    private string _animBoolIsVictory = "IsVictory";
+    private int _animFire = Animator.StringToHash("Fire");
+    private int _animFloatSpeed = Animator.StringToHash("Speed");
+    private int _animBoolIsVictory = Animator.StringToHash("IsVictory");
 
     private void Start()
     {
@@ -20,7 +20,7 @@ public class PlayerAnimation : MonoBehaviour
 
     public void Fire()
     {
-        _animator.Play(_animFire, 0);
+        _animator.Play(_animFire);
     }
 
     private void Update()

@@ -8,7 +8,7 @@ public class CreatureAnimationTakeDamage : MonoBehaviour
 {
     private Creature _creature;
     private Animator _animator;
-    private string _animTakeDamage = "Apply Damade";
+    private int _animTakeDamage = Animator.StringToHash("Apply Damade");
 
     private void Awake()
     {
