@@ -58,8 +58,8 @@ public class PlayerBehavior : MonoBehaviour
             _player.MoveToCheckPoint(_checkPoint);
             _checkPoint.CheckPointPassed += CheckPointPassed;
         }
-        else { }
-            //GameOver();
+        else
+            SendGameOver();
 
         _enableControl = false;
     }

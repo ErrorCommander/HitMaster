@@ -19,8 +19,14 @@ public class CheckPoint : MonoBehaviour
     public bool IsPassed => LivingEnemiesCount <= 0;
 
     public event Action CheckPointPassed;
-    public event Action EnemyKilled;
-    public event Action FrendlyKilled;
+    public event Action EnemyDie;
+    public event Action FrendlyDie;
+
+    public void EnableCamera(bool enable)
+    {
+        if (_camera != null)
+            _camera.enabled = enable;
+    }
 
     private void Start()
     {
@@ -64,7 +70,7 @@ public class CheckPoint : MonoBehaviour
     private void DieEnemy()
     {
         LivingEnemiesCount--;
-        EnemyKilled?.Invoke();
+        EnemyDie?.Invoke();
 
         if (LivingEnemiesCount <= 0)
         {
@@ -80,7 +86,7 @@ public class CheckPoint : MonoBehaviour
     private void DieFrendly()
     {
         LivingFrendlyCount--;
-        FrendlyKilled?.Invoke();
+        FrendlyDie?.Invoke();
 
         if (LivingFrendlyCount <= 0)
         {
@@ -95,8 +101,6 @@ public class CheckPoint : MonoBehaviour
     private void OnEnable()
     {
         EnableCreatures(true);
-        if (_camera != null)
-            _camera.enabled = true;
     }
 
     private void OnDisable()
