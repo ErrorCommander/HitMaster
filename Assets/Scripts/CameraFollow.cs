@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Threading;
+using System.Threading.Tasks;
 
 public class CameraFollow : MonoBehaviour
 {
@@ -21,11 +23,12 @@ public class CameraFollow : MonoBehaviour
 
     private void SetTargetPlayer(CheckPoint point)
     {
+        _virtualCamera.enabled = true;
+
         if(_checkPoint != null)
             _checkPoint.EnableCamera(false);
 
         _checkPoint = point;
         point.EnableCamera(true);
-        _virtualCamera.enabled = true;
     }
 }
