@@ -15,6 +15,7 @@ public class Player : MonoBehaviour, IMovable
     public float Speed => _agent == null ? 0 : _agent.velocity.magnitude;
     public event Action OnFire;
     public event Action OnArrivedInPoint;
+    public event Action OnMove;
 
     private NavMeshAgent _agent;
 
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour, IMovable
     public void MoveToCheckPoint(CheckPoint point)
     {
         MoveTo(point.position);
+        OnMove?.Invoke();
         StartCoroutine(CheckArrivedInPoint(point));
     }
 

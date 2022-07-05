@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,6 +6,7 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
+    [SerializeField] private CinemachineVirtualCamera _camera;
     [SerializeField] private Transform _viewPoint;
     [SerializeField] private List<Creature> _enemies;
     [SerializeField] private List<Creature> _frendly;
@@ -93,11 +95,15 @@ public class CheckPoint : MonoBehaviour
     private void OnEnable()
     {
         EnableCreatures(true);
+        if (_camera != null)
+            _camera.enabled = true;
     }
 
     private void OnDisable()
     {
         EnableCreatures(false);
+        if(_camera!=null)
+            _camera.enabled = false;
     }
 
     private void EnableCreatures(bool state)

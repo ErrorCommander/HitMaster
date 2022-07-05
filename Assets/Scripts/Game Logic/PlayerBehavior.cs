@@ -7,7 +7,7 @@ public class PlayerBehavior : MonoBehaviour
 {
     [SerializeField] private Way _way;
     [SerializeField] private Player _player;
-    [SerializeField] [Range(0,3)] private float _delayAfterPassedCheckPoint = 0.5f;
+    [SerializeField] [Range(0,3)] private float _delayEnableControl = 0.5f;
 
     private bool _readyToAttack = false;
     private bool _enableControl = false;
@@ -18,8 +18,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         _input = new PlayerInput();
         _input.Player.Tap.performed += FirstTap;
-
-        _player.OnArrivedInPoint += () => _readyToAttack = _enableControl = true;
+        _player.OnArrivedInPoint += ArrivedInPoint;
     }
 
     private void Start()
@@ -65,11 +64,17 @@ public class PlayerBehavior : MonoBehaviour
         _enableControl = false;
     }
 
+    private void ArrivedInPoint()
+    {
+        _readyToAttack = true;
+        StartCoroutine(TimedDisableControl(_delayEnableControl));
+    }
+
     private void CheckPointPassed()
     {
         _checkPoint.CheckPointPassed -= CheckPointPassed;
         _readyToAttack = false;
-        StartCoroutine(TimedDisableControl(_delayAfterPassedCheckPoint));
+        StartCoroutine(TimedDisableControl(_delayEnableControl));
     }
 
     private void PlayerAttack(Vector2 screenPosition)
