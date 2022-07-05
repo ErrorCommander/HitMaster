@@ -79,14 +79,18 @@ public class CheckPoint : MonoBehaviour
             {
                 CheckPointPassed?.Invoke();
                 enabled = false;
+                FrendlyInSaferty();
+            }
+        }
+    }
 
-                foreach (var unit in _frendly)
-                {
-                    if (unit.IsAlive)
-                    {
-                        unit.InSafety(_viewPoint);
-                    }
-                }
+    private void FrendlyInSaferty()
+    {
+        foreach (var unit in _frendly)
+        {
+            if (unit.IsAlive)
+            {
+                unit.InSafety(_viewPoint);
             }
         }
     }

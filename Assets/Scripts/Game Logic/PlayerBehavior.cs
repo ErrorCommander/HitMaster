@@ -31,7 +31,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         _input.Player.Tap.performed -= FirstTap;
         _input.Player.Tap.performed += TapToScreen;
-        GlobalEventSystem.SendStartGame();
+        GlobalEventSystem.Instance.SendStartGame();
         MoveNextPoint();
     }
 
@@ -58,7 +58,7 @@ public class PlayerBehavior : MonoBehaviour
             _checkPoint.CheckPointPassed += CheckPointPassed;
         }
         else
-            GlobalEventSystem.SendGameOver();
+            GlobalEventSystem.Instance.SendGameOver();
 
         _enableControl = false;
     }

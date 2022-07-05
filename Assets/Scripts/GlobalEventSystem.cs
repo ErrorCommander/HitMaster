@@ -1,11 +1,15 @@
 using UnityEngine.Events;
 using UnityEngine;
 
-public static class GlobalEventSystem
+public class GlobalEventSystem
 {
-    public static UnityEvent OnStartGame = new UnityEvent();
-    public static UnityEvent OnGameOver = new UnityEvent();
+    public static GlobalEventSystem Instance => _instance ??= new GlobalEventSystem();
+    private static GlobalEventSystem _instance;
+    private GlobalEventSystem() { }
 
-    public static void SendStartGame() => OnStartGame?.Invoke();
-    public static void SendGameOver() => OnGameOver?.Invoke();
+    public UnityEvent OnStartGame = new UnityEvent();
+    public UnityEvent OnGameOver = new UnityEvent();
+
+    public void SendStartGame() => OnStartGame?.Invoke();
+    public void SendGameOver() => OnGameOver?.Invoke();
 }
