@@ -5524,8 +5524,8 @@ MonoBehaviour:
   m_UpdateMethod: 2
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
-    m_Style: 1
-    m_Time: 1
+    m_Style: 3
+    m_Time: 0.5
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -7631,7 +7631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _way: {fileID: 682877978}
   _player: {fileID: 1354562335}
-  _delayAfterPassedCheckPoint: 0.7
+  _delayEnableControl: 0.5
 --- !u!1001 &1359318083
 PrefabInstance:
   m_ObjectHideFlags: 0
